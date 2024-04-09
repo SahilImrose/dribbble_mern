@@ -15,8 +15,19 @@ function VerifyEmail() {
   useEffect(() => {
     fetch(`http://localhost:3000/api/user/${id}`)
       .then((response) => response.json())
-      .then((data) => setUser(data));
-      fetch(`http://localhost:3000/api/verifyEmail`)
+      .then((data) => {
+        setUser(data);
+        fetch(`http://localhost:3000/api/verifyEmail`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            id: id,
+            email: data.email,
+          }),
+        });
+      });
   }, [id]);
   if (id != undefined) {
     return (
