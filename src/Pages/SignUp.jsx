@@ -33,7 +33,7 @@ export default function SignUp() {
         .then((data) => {
           if (data.message === "User created successfully.") {
             setError("");
-            navigate('/profile', { state: { id:  data._id} });
+            navigate('/profile', { state: { id:  data.id} });
             if (e.target.email.classList.contains("text-red-400")) {
               e.target.email.classList.toggle("text-red-400");
             }

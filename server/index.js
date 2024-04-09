@@ -26,6 +26,12 @@ async function run() {
     await client.connect();
     const userCollection = client.db("dribble-mern").collection("users");
     console.log("connected");
+    app.get("/api/user/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await userCollection.findOne(query);
+      res.send(result);
+    });
     app.post("/api/createUser", async (req, res) => {
       const usrNameUnique = await userCollection
         .find({ usrName: req.body.usrName })
@@ -48,10 +54,6 @@ async function run() {
         res.send({ message: "* Username is already in use." });
       }
     });
-    app.get("/api/user", async (req, res) => {
-      const users = await userCollection.find({}).toArray();
-      res.send(users);
-    });
     app.put("/api/updateProfile/:id", async (req, res) => {
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
@@ -64,13 +66,23 @@ async function run() {
         },
       };
       await userCollection.updateOne(filter, data, options);
-      res.send("updated");
+      res.send({ status: "updated" });
     });
-    app.get("/api/user:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: new ObjectId(id) };
-      const result = await userCollection.findOne(query);
-      res.send(result);
+    app.post("/api/verifyEmail", async (req, res) => {
+      
+      function stringGen(len) {
+        var text = "";
+
+        var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < len; i++)
+          text += charset.charAt(Math.floor(Math.random() * charset.length));
+
+        return text;
+      }
+
+      console.log(stringGen(64));
+      res.send(stringGen(64));
     });
   } finally {
     // await client.close();

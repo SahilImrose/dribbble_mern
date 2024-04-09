@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url('https://fonts.cdnfonts.com/css/mona-sans');
+@import url("https://fonts.cdnfonts.com/css/mona-sans");
 
 :root {
   --default-section-padding: 0px 20px;
@@ -14,7 +14,7 @@
   --header-padding--1100: 64px 64px 30px;
   --attribution-padding--960: 25px 40px 35px;
   --attribution-padding--1100: 25px 64px 35px;
-  --main-font-family: 'Mona-Sans','Mona Sans', sans-serif;
+  --main-font-family: "Mona-Sans", "Mona Sans", sans-serif;
   --headers-font-family: "Montserrat", sans-serif;
   --left-sidebar-text-color: #866118;
 }
@@ -102,8 +102,6 @@ main h2 {
   letter-spacing: -0.5px;
 }
 
-
-
 .divider {
   margin-bottom: 10px;
   border: none;
@@ -126,7 +124,7 @@ main h2 {
   display: inline-block;
   width: fit-content;
   text-align: center;
-  background-color: #EB4887;
+  background-color: #eb4887;
   text-decoration: none;
   color: white !important;
   padding: 10px 25px;
@@ -203,7 +201,7 @@ label {
     gap: 0rem;
   }
 }
-input[type="checkbox"]{
+input[type="checkbox"] {
   accent-color: #e43477;
 }
 
@@ -358,7 +356,6 @@ footer {
     padding: var(--attribution-padding--1100);
   }
 }
-.text-red-400{
-  
+.text-red-400 {
   color: #f87171 !important;
 }

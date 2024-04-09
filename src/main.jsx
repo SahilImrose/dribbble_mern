@@ -4,6 +4,8 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
 import ProfilePic from "./Pages/ProfilePic";
+import UserPreference from "./Pages/UserPreference";
+import VerifyEmail from "./Pages/VerifyEmail";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,16 @@ const router = createBrowserRouter([
     path: "/profile",
     exact: true,
     element: <ProfilePic />,
+  },
+  {
+    path: "/userPreference",
+    exact: true,
+    element: <UserPreference />,
+  },
+  {
+    path: "/verifyEmail",
+    exact: true,
+    element: <VerifyEmail />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
