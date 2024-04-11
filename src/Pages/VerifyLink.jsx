@@ -3,20 +3,36 @@ import { useParams } from "react-router-dom";
 
 export default function VerifyLink() {
   const { id, token } = useParams();
-useEffect(() => {
-
-  fetch(`http://localhost:3000/api/user/${id}/`)
-  .then(res=>res.json())
-  .then(data=>{
-    if(data.token == token){
-        console.log("Matched")
-    }else{
-        console.log(data.token)
-        console.log(token)
-        console.log("not matched");
+  useEffect(() => {
+    if (id.length === 24) {
+      fetch(`https://dribbblemernserver-production.up.railway.app/api/user/${id}/`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error === "User not found") {
+            document.getElementById("status").innerHTML = data.error;
+          } else {
+            if (data.token == token) {
+              fetch(`https://dribbblemernserver-production.up.railway.app/api/verifyProfile/${id}`, {
+                method: "PUT",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                  isVerified: true,
+                }),
+              });
+              document.getElementById("status").innerHTML =
+                "Your mail is verified!";
+            } else {
+              document.getElementById("status").innerHTML =
+                "Your mail is not verified! Please check for the latest link.";
+            }
+          }
+        });
+    } else {
+      document.getElementById("status").innerHTML = "User not found!";
     }
-  })
-}, [id])
+  }, [id]);
   return (
     <>
       <nav className="pt-14 pb-32 px-10">
@@ -38,8 +54,7 @@ useEffect(() => {
         </svg>
       </nav>
       <div className="text-center grid  justify-items-center content-center text-gray-700 gap-3 h-[50vh]">
-        <h1 className="text-5xl text-gray-950">Your mail is verified!</h1>
-
+        <h1 className="text-5xl text-gray-950" id="status"></h1>
       </div>
     </>
   );

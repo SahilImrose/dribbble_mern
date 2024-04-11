@@ -29,7 +29,7 @@ export default function ProfilePic() {
   }, []);
 
   const updateProfile = () => {
-    fetch(`http://localhost:3000/api/updateProfile/${id}`, {
+    fetch(`https://dribbblemernserver-production.up.railway.app/api/updateProfile/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -15,7 +15,7 @@ export default function SignUp() {
     const email = e.target.email.value;
 
     if (/.{6,}/.test(password)) {
-      fetch("http://localhost:3000/api/createUser", {
+      fetch("https://dribbblemernserver-production.up.railway.app/api/createUser", {
         method: "POST",
         headers: {
           "content-type": "application/json",
