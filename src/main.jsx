@@ -6,6 +6,7 @@ import SignUp from "./Pages/SignUp";
 import ProfilePic from "./Pages/ProfilePic";
 import UserPreference from "./Pages/UserPreference";
 import VerifyEmail from "./Pages/VerifyEmail";
+import VerifyLink from "./Pages/VerifyLink";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
     path: "/verifyEmail",
     exact: true,
     element: <VerifyEmail />,
+  },
+  {
+    path: "/verify/:id/token/:token",
+    exact: true,
+    element: <VerifyLink />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -27,6 +27,8 @@ export default function SignUp() {
           email: email,
           profilePic: {},
           location: {},
+          token: {},
+          isVerified: false,
         }),
       })
         .then((res) => res.json())
